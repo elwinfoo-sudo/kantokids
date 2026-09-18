@@ -70,13 +70,15 @@ async function prepareRec(id){
  <small>← / → wischen funktioniert ebenfalls</small></div>`;
  let card=$("reccard");card.addEventListener("touchstart",e=>touchX=e.changedTouches[0].screenX,{passive:true});
  card.addEventListener("touchend",e=>{if(touchX===null)return;let dx=e.changedTouches[0].screenX-touchX;touchX=null;if(Math.abs(dx)>55){dx<0?nextRec():prevRec()}},{passive:true});
- window.scrollTo({top:0,behavior:"smooth"})
 }
 function nextRec(){let i=(recIndex+1)%ITEMS.length;prepareRec(ITEMS[i].id)}
 function prevRec(){let i=(recIndex-1+ITEMS.length)%ITEMS.length;prepareRec(ITEMS[i].id)}
 async function toggleRec(){if(recorder&&recorder.state==="recording"){recorder.stop();return}try{let s=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];recorder=new MediaRecorder(s);recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=()=>{let blob=new Blob(chunks,{type:recorder.mimeType});let t=db.transaction("clips","readwrite");t.objectStore("clips").put(blob,recItem.id);t.oncomplete=()=>prepareRec(recItem.id);s.getTracks().forEach(t=>t.stop())};recorder.start();$("recbtn").textContent="⏹ Speichern";$("recbtn").classList.add("recording");$("rmsg").textContent="Sprich jetzt: "+recItem.canto}catch(e){$("rmsg").textContent="Mikrofonzugriff wurde nicht erlaubt."}}
 function deleteRec(){let t=db.transaction("clips","readwrite");t.objectStore("clips").delete(recItem.id);t.oncomplete=()=>prepareRec(recItem.id)}
 renderFilters();render();updateProgress();
+let lastDay=todayKey();
+setInterval(()=>{let now=todayKey();if(now!==lastDay){lastDay=now;updateProgress()}},30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){lastDay=todayKey();updateProgress()}});
 if("serviceWorker"in navigator){
  navigator.serviceWorker.register("sw.js").then(reg=>reg.update()).catch(()=>{});
 }

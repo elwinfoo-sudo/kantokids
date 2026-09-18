@@ -1,13 +1,15 @@
-# KantoKids V2.4
+# KantoKids V2.5
 
-## Neu in V2.4
-- Robustere Update-Strategie für die Homescreen-PWA.
-- `index.html`, `app.js` und `data.js` werden bei bestehender Internetverbindung bevorzugt vom Server geladen; der Cache bleibt als Offline-Fallback erhalten.
-- Neue Service-Worker-Versionen werden mit `skipWaiting()` schneller aktiviert und mit `clients.claim()` übernommen.
-- Beim App-Start wird zusätzlich aktiv nach einem Service-Worker-Update gesucht.
-- Cache-Version auf `kk-v8` erhöht.
-- Die Audio-Datenbank `KantoKidsAudio` / `clips` wird durch diese Update-Logik nicht gelöscht oder verändert.
-- Alle Funktionen aus V2.3 bleiben erhalten: Eltern-PIN 1990 sowie Audio-Backup und Wiederherstellung.
+## Neu in V2.5
+- Aufnahme-Workflow ohne automatisches Scrollen zum Seitenanfang.
+- Beim Speichern sowie bei „Weiter“, „Zurück“ und Wischen bleibt die Aufnahmeansicht an ihrer aktuellen Scrollposition.
+- Der Aufnahmebereich steht im Elternbereich jetzt vor Backup und Tagesziel, damit häufiges Aufnehmen schneller erreichbar ist.
+- Der Tagesfortschritt wird beim Wechsel auf einen neuen lokalen Kalendertag ab 00:00 Uhr automatisch auf 0 gesetzt.
+- Auch wenn KantoKids über Mitternacht geöffnet bleibt, prüft die App regelmäßig den Tageswechsel.
+- Beim Zurückkehren in die App wird der Tageswechsel ebenfalls sofort geprüft.
+- Sterne/Gesamtbelohnung bleiben vom täglichen Reset unberührt.
+- Cache-Version auf `kk-v9` erhöht.
+- Audio-IndexedDB `KantoKidsAudio` / `clips` wird nicht verändert.
 
 ## Versionshistorie
 
@@ -21,53 +23,39 @@
 - Zahlen 1–100 und erste Alltagsfloskeln ergänzt.
 
 ### V2.1
-- Verbesserter Aufnahme-Workflow.
-- Weiter/Zurück direkt an der Aufnahmekarte.
-- Navigation per Wischgeste.
-- Fortschrittsanzeige, z. B. 17 / 144.
-- Nach dem Speichern bleibt die Aufnahmekarte oben.
-- Suche für gezielte Sprünge bleibt erhalten.
+- Verbesserter Aufnahme-Workflow mit Weiter/Zurück und Wischgesten.
+- Fortschrittsanzeige für die Aufnahmeliste.
+- Nach dem Speichern bleibt die Aufnahmekarte aktiv.
+- Suche für gezielte Sprünge.
 
 ### V2.2
-- Einstellbares Tagesziel im Elternbereich, Standard 20 richtige Wiederholungen.
-- Tagesfortschritt mit automatischem Reset an einem neuen Kalendertag.
-- Separater Tages-Reset und Reset aller Sterne.
-- Sterne bleiben als langfristige Belohnung erhalten.
-- Kategorien „Familie“ und „Aktivitäten“ ergänzt.
-- Oma/Opa nach mütterlicher und väterlicher Seite differenziert.
-- Weitere Alltagsaktivitäten ergänzt.
-- Aufnahme-Workflow aus V2.1 bleibt erhalten.
+- Einstellbares Tagesziel, Standard 20 richtige Wiederholungen.
+- Tagesfortschritt und langfristige Sterne.
+- Tages-Reset und separater Sterne-Reset.
+- Kategorien Familie und Aktivitäten sowie weitere Alltagsbegriffe.
 
 ### V2.3
-- Elternbereich mit PIN `1990` geschützt.
-- Elternbereich ist nach jedem Neustart wieder gesperrt und kann manuell gesperrt werden.
-- Audio-Backup im Elternbereich.
-- Lokal gespeicherte Aufnahmen können in eine Backup-Datei exportiert werden.
-- Backup kann in einer anderen KantoKids-Installation wiederhergestellt werden.
-- Vor dem Überschreiben vorhandener Aufnahmen wird nachgefragt.
-- Backup-Erstellung verändert oder löscht die Originalaufnahmen nicht.
+- Elternbereich mit PIN `1990`.
+- Elternbereich nach Neustart wieder gesperrt und zusätzlich manuell sperrbar.
+- Audio-Backup und Wiederherstellung.
+- Export verändert oder löscht die Originalaufnahmen nicht.
+- Vor dem Überschreiben vorhandener Aufnahmen beim Import wird nachgefragt.
 
 ### V2.4
-- Update-Mechanismus der Homescreen-PWA überarbeitet.
-- Zentrale App-Dateien werden online bevorzugt frisch vom Server geladen.
-- Offline-Fallback über den Cache bleibt erhalten.
-- Neue Service Worker sollen schneller aktiviert und übernommen werden.
-- Zusätzliche aktive Update-Prüfung beim App-Start.
+- Update-Mechanismus der Homescreen-PWA verbessert.
+- Zentrale App-Dateien werden online bevorzugt vom Server geladen.
+- Cache bleibt als Offline-Fallback.
+- Schnellere Service-Worker-Aktivierung und aktive Update-Prüfung.
 - Audio-IndexedDB bleibt unangetastet.
 
-## Wichtiger Hinweis zur Rettung alter Aufnahmen
-Die alte Homescreen-Installation, in der die Aufnahmen noch funktionieren, **nicht löschen**.
-Keine Safari-/Website-Daten löschen und keinen Speicher bereinigen, solange die Aufnahmen nicht erfolgreich gesichert wurden.
+### V2.5
+- Kein Sprung mehr zum Seitenanfang beim Aufnahme-Workflow.
+- Aufnahmebereich im Elternbereich nach oben verschoben.
+- Automatischer Tagesreset bei Beginn eines neuen lokalen Kalendertags um 00:00 Uhr, auch bei geöffneter App.
+- Sterne bleiben erhalten.
 
-Nach dem Hochladen von V2.4:
-1. Die alte KantoKids-Homescreen-App mit bestehender Internetverbindung öffnen.
-2. Kurz geöffnet lassen, vollständig schließen und erneut öffnen.
-3. Prüfen, ob beim Öffnen des Elternbereichs die PIN `1990` verlangt wird.
-4. Sobald die neuen Funktionen dort sichtbar sind, unter „Eltern“ → „Aufnahmen sichern“ sofort „Backup erstellen“ wählen.
-5. Die erzeugte KantoKids-Audio-Backup-Datei sicher in „Dateien“ aufbewahren.
-6. Erst nach erfolgreicher Wiederherstellung mehrere Aufnahmen testen.
-
-Die alte Homescreen-Installation erst löschen, wenn Backup und Wiederherstellung sicher geprüft wurden.
+## Wichtiger Hinweis zu den Aufnahmen
+Vorhandene Aufnahmen liegen lokal in IndexedDB. Updates dieser Version löschen oder migrieren die Audio-Datenbank nicht. Ein vorhandenes Audio-Backup weiterhin sicher aufbewahren.
 
 ## Update über GitHub Pages
 Die vier Dateien aus diesem ZIP in das bestehende Repository hochladen und die gleichnamigen Dateien ersetzen. `data.js`, `manifest.webmanifest` und `icon.svg` bleiben unverändert.

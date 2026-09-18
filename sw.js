@@ -1,4 +1,4 @@
-const C='kk-v8';
+const C='kk-v9';
 const A=['./','index.html','app.js','data.js','manifest.webmanifest','icon.svg'];
 
 self.addEventListener('install',e=>{
