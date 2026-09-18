@@ -1,14 +1,23 @@
-# KantoKids V2.2
+# KantoKids V2.3
 
 Neu:
-- Einstellbares Tagesziel im Elternbereich (Standard 20 richtige Wiederholungen)
-- Anzeige oben als z. B. 7/20
-- Tagesfortschritt setzt sich an einem neuen Kalendertag automatisch zurück
-- Button für Tages-Reset und separater Button für alle Sterne
-- Sterne bleiben als langfristige Belohnung bestehen
-- Neue Kategorien Familie und Aktivitäten
-- Oma/Opa differenziert nach mütterlicher/väterlicher Seite
-- Alltag: Zähneputzen, Waschen, Duschen, Anziehen, Essen, Schlafen, Schule, Hausaufgaben, Lesen, Aufräumen usw.
-- Aufnahme-Workflow mit Weiter/Zurück und Swipe bleibt erhalten
+- Elternbereich mit PIN 1990 geschützt
+- Elternbereich ist nach jedem Neustart der App wieder gesperrt
+- Zusätzlicher Button zum sofortigen Sperren des Elternbereichs
+- Audio-Backup direkt im Elternbereich
+- Lokal gespeicherte eigene Aufnahmen können in eine Backup-Datei exportiert werden
+- Backup-Dateien können in einer anderen KantoKids-Installation wiederhergestellt werden
+- Vor dem Überschreiben bereits vorhandener Aufnahmen wird nachgefragt
+- Das Erstellen eines Backups löscht oder verändert die Originalaufnahmen nicht
+- Alle Funktionen aus V2.2 bleiben erhalten
 
-Update: Alle Dateien in das bestehende GitHub-Repository hochladen und gleichnamige Dateien ersetzen.
+## Aufnahmen aus der alten Homescreen-Installation sichern
+
+1. Nach dem Update die alte KantoKids-Homescreen-App öffnen, in der die Aufnahmen noch funktionieren.
+2. Unter „Eltern“ → „Aufnahmen sichern“ auf „Backup erstellen“ tippen.
+3. Die erzeugte KantoKids-Audio-Backup-Datei sicher in „Dateien“ aufbewahren.
+4. Die KantoKids-Installation öffnen, in der die Aufnahmen fehlen.
+5. Unter „Eltern“ → „Aufnahmen sichern“ auf „Backup wiederherstellen“ tippen und die Datei auswählen.
+6. Einige Aufnahmen testen.
+
+Wichtig: Die alte Homescreen-Installation erst löschen, wenn das Backup erstellt und die Aufnahmen erfolgreich wiederhergestellt und getestet wurden.

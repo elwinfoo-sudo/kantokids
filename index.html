@@ -19,7 +19,12 @@ small{color:#6e665a}.search{width:100%;font-size:17px;padding:13px;border:0;bord
 <nav><button id="nLearn" class="on" onclick="view('learn')">Entdecken</button><button id="nGame" onclick="view('game')">Spielen</button><button id="nParent" onclick="view('parent')">🎙️ Eltern</button></nav>
 <section id="learn"><div class="filters" id="filters"></div><div class="hero"><div class="emoji" id="be"></div><div class="han" id="bc"></div><div class="jyut" id="bj"></div><div class="de" id="bd"></div><div class="row"><button onclick="play(current)">🔊 Anhören</button><button class="light" onclick="next()">Nächstes →</button></div></div><div class="grid" id="grid"></div></section>
 <section id="game" class="panel"><div class="emoji">👂</div><h2>Was hörst du?</h2><button onclick="play(question)">🔊 Anhören</button><div class="answers" id="answers"></div><div class="status" id="gmsg"></div></section>
-<section id="parent"><div class="panel"><h2>⚙️ Tagesziel</h2>
+<section id="parent"><div class="row" style="margin:0 0 12px"><button class="light" onclick="lockParent()">🔒 Elternbereich sperren</button></div>
+<div class="panel"><h2>💾 Aufnahmen sichern</h2><p>Erstelle eine Backup-Datei deiner eigenen Aufnahmen oder stelle sie in einer anderen KantoKids-Installation wieder her.</p>
+<div class="row"><button onclick="exportAudio()">Backup erstellen</button><button class="light" onclick="chooseAudioBackup()">Backup wiederherstellen</button></div>
+<input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importAudio(event)"><div class="status" id="backupMsg"></div>
+<small>Das Backup kopiert die Aufnahmen nur in eine Datei. Die Originale bleiben erhalten. Bereits vorhandene Aufnahmen werden beim Wiederherstellen nur nach Bestätigung ersetzt.</small></div>
+<div class="panel" style="margin-top:14px"><h2>⚙️ Tagesziel</h2>
 <p>Wie viele richtige Wiederholungen sollen die Kids pro Tag schaffen?</p>
 <div class="row"><button class="light" onclick="changeGoal(-5)">−5</button><div class="pill">🎯 <span id="goalValue">20</span> pro Tag</div><button class="light" onclick="changeGoal(5)">+5</button></div>
 <div class="row"><button class="light" onclick="resetToday()">Heutigen Fortschritt resetten</button><button class="light" onclick="resetStars()">Alle Sterne resetten</button></div>
