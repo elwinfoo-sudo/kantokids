@@ -1,8 +1,9 @@
-# KantoKids V2
-Neu: Aufnahme direkt im Elternbereich; eigene Stimme wird lokal auf dem iPhone gespeichert. Außerdem Zahlen 1–100 und erste Alltagsfloskeln.
+# KantoKids V2.1
+Verbesserter Aufnahme-Workflow:
+- Weiter/Zurück direkt an der Aufnahmekarte
+- Nach links/rechts wischen
+- Fortschrittsanzeige (z. B. 17 / 144)
+- Nach dem Speichern bleibt die Aufnahmekarte oben
+- Suche bleibt für gezielte Sprünge erhalten
 
-## Update eines bestehenden GitHub-Repositories
-Alle Dateien dieses ZIPs in das bestehende Repository hochladen und gleichnamige Dateien ersetzen. Danach GitHub Pages kurz neu deployen lassen bzw. warten. Auf dem iPhone die App ggf. komplett schließen und neu öffnen.
-
-## Mikrofon
-Die installierte PWA muss über HTTPS/GitHub Pages laufen. Im Elternbereich Element antippen → Aufnehmen → sprechen → Speichern. Die Aufnahme wird lokal in IndexedDB gespeichert und nicht zu GitHub übertragen.
+Zum Aktualisieren alle Dateien in das bestehende GitHub-Repository hochladen und gleichnamige Dateien ersetzen.
