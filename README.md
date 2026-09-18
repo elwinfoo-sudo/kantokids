@@ -1,61 +1,47 @@
-# KantoKids V2.5
+# KantoKids V2.6
 
-## Neu in V2.5
-- Aufnahme-Workflow ohne automatisches Scrollen zum Seitenanfang.
-- Beim Speichern sowie bei „Weiter“, „Zurück“ und Wischen bleibt die Aufnahmeansicht an ihrer aktuellen Scrollposition.
-- Der Aufnahmebereich steht im Elternbereich jetzt vor Backup und Tagesziel, damit häufiges Aufnehmen schneller erreichbar ist.
-- Der Tagesfortschritt wird beim Wechsel auf einen neuen lokalen Kalendertag ab 00:00 Uhr automatisch auf 0 gesetzt.
-- Auch wenn KantoKids über Mitternacht geöffnet bleibt, prüft die App regelmäßig den Tageswechsel.
-- Beim Zurückkehren in die App wird der Tageswechsel ebenfalls sofort geprüft.
-- Sterne/Gesamtbelohnung bleiben vom täglichen Reset unberührt.
-- Cache-Version auf `kk-v9` erhöht.
-- Audio-IndexedDB `KantoKidsAudio` / `clips` wird nicht verändert.
+## Neu in V2.6
+- Neue Kategorie **Farben**: Rot, Blau, Gelb, Grün, Orange, Lila, Rosa, Braun, Schwarz, Weiß und Grau.
+- Jede Farbe mit kantonesischer Schrift, Jyutping, deutscher Bedeutung und farbiger Darstellung.
+- Farben funktionieren in Entdecken, Spielen und im Aufnahmebereich.
+- Im Spiel: falsche Antwort = **roter Rahmen**, richtige Antwort = **grüner Rahmen**.
+- Nach einer falschen Antwort kann weiter geraten werden; nach einer richtigen Antwort folgt automatisch die nächste Aufgabe.
+- Cache-Version `kk-v10`.
+- Audio-IndexedDB bleibt unverändert.
 
 ## Versionshistorie
-
 ### V1
-- Erste KantoKids-Version als installierbare Web-App.
-- Grundlegender Lern- und Spielbereich für kantonesische Wörter.
+Erste installierbare KantoKids-Web-App mit Lern- und Spielbereich.
 
 ### V2
-- Eigene Sprachaufnahmen direkt im Elternbereich.
-- Aufnahmen werden lokal auf dem iPhone in IndexedDB gespeichert und nicht zu GitHub übertragen.
-- Zahlen 1–100 und erste Alltagsfloskeln ergänzt.
+Lokale eigene Sprachaufnahmen, Zahlen 1–100 und erste Alltagsfloskeln.
 
 ### V2.1
-- Verbesserter Aufnahme-Workflow mit Weiter/Zurück und Wischgesten.
-- Fortschrittsanzeige für die Aufnahmeliste.
-- Nach dem Speichern bleibt die Aufnahmekarte aktiv.
-- Suche für gezielte Sprünge.
+Verbesserter Aufnahme-Workflow mit Weiter/Zurück, Wischgesten, Fortschrittsanzeige und Suche.
 
 ### V2.2
-- Einstellbares Tagesziel, Standard 20 richtige Wiederholungen.
-- Tagesfortschritt und langfristige Sterne.
-- Tages-Reset und separater Sterne-Reset.
-- Kategorien Familie und Aktivitäten sowie weitere Alltagsbegriffe.
+Tagesziel, Tagesfortschritt, langfristige Sterne sowie Familie/Aktivitäten.
 
 ### V2.3
-- Elternbereich mit PIN `1990`.
-- Elternbereich nach Neustart wieder gesperrt und zusätzlich manuell sperrbar.
-- Audio-Backup und Wiederherstellung.
-- Export verändert oder löscht die Originalaufnahmen nicht.
-- Vor dem Überschreiben vorhandener Aufnahmen beim Import wird nachgefragt.
+Elternbereich mit PIN `1990`, Audio-Backup und Wiederherstellung.
 
 ### V2.4
-- Update-Mechanismus der Homescreen-PWA verbessert.
-- Zentrale App-Dateien werden online bevorzugt vom Server geladen.
-- Cache bleibt als Offline-Fallback.
-- Schnellere Service-Worker-Aktivierung und aktive Update-Prüfung.
-- Audio-IndexedDB bleibt unangetastet.
+Verbesserte Update-Strategie der Homescreen-PWA mit Offline-Fallback.
 
 ### V2.5
-- Kein Sprung mehr zum Seitenanfang beim Aufnahme-Workflow.
-- Aufnahmebereich im Elternbereich nach oben verschoben.
-- Automatischer Tagesreset bei Beginn eines neuen lokalen Kalendertags um 00:00 Uhr, auch bei geöffneter App.
-- Sterne bleiben erhalten.
+Kein Hochscrollen beim Aufnehmen; Aufnahmebereich nach oben; täglicher Reset des Tagesfortschritts ab 00:00 Uhr.
 
-## Wichtiger Hinweis zu den Aufnahmen
-Vorhandene Aufnahmen liegen lokal in IndexedDB. Updates dieser Version löschen oder migrieren die Audio-Datenbank nicht. Ein vorhandenes Audio-Backup weiterhin sicher aufbewahren.
+### V2.6
+Kategorie Farben mit 11 gebräuchlichen Farben und rot/grünem Antwort-Feedback im Spiel.
 
-## Update über GitHub Pages
-Die vier Dateien aus diesem ZIP in das bestehende Repository hochladen und die gleichnamigen Dateien ersetzen. `data.js`, `manifest.webmanifest` und `icon.svg` bleiben unverändert.
+## Update
+Diese vier Dateien hochladen:
+- `index.html` ersetzen
+- `sw.js` ersetzen
+- `README.md` ersetzen
+- `v26.js` **neu hinzufügen**
+
+`app.js`, `data.js`, `manifest.webmanifest` und `icon.svg` bleiben gegenüber V2.5 unverändert.
+
+## Audio-Sicherheit
+Die Datenbank `KantoKidsAudio` / `clips` wird durch V2.6 nicht gelöscht oder migriert. Vorhandene Backups weiterhin sicher aufbewahren.

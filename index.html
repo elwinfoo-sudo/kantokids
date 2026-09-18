@@ -11,7 +11,7 @@ nav button{background:#eadfc8;color:#25231f}nav .on{background:#25231f;color:whi
 .hero,.panel{background:white;border-radius:27px;padding:20px;text-align:center;box-shadow:0 7px 28px #0001}.emoji{font-size:74px}.han{font-size:38px;font-weight:900}.jyut{font-size:18px;color:#755e39;margin:4px}.de{font-size:18px}
 .row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:15px}.light{background:#efe3cb;color:#222}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:13px}.card{background:white;border-radius:20px;padding:14px;text-align:center;box-shadow:0 4px 16px #0001}.card .e{font-size:39px}.card .h{font-size:23px;font-weight:900}.card .j{font-size:13px;color:#756}
-#game,#parent{display:none}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.answer{background:#f4eee3;color:#222;min-height:85px;font-size:25px}
+#game,#parent{display:none}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.answer{background:#f4eee3;color:#222;min-height:85px;font-size:25px;border:4px solid transparent}.answer.correct{border-color:#2e9d50}.answer.wrong{border-color:#d64545}.answer:disabled{opacity:1}
 .rec{font-size:21px;padding:18px}.recording{background:#b32d2d}.status{min-height:28px;margin:12px;font-weight:800}.parentItem{text-align:left;background:#faf5eb;border-radius:18px;padding:14px;margin:10px 0}.parentItem b{font-size:21px}
 small{color:#6e665a}.search{width:100%;font-size:17px;padding:13px;border:0;border-radius:16px;margin-bottom:10px}
 </style></head><body><main>
@@ -30,4 +30,4 @@ small{color:#6e665a}.search{width:100%;font-size:17px;padding:13px;border:0;bord
 <div class="row"><button class="light" onclick="changeGoal(-5)">−5</button><div class="pill">🎯 <span id="goalValue">20</span> pro Tag</div><button class="light" onclick="changeGoal(5)">+5</button></div>
 <div class="row"><button class="light" onclick="resetToday()">Heutigen Fortschritt resetten</button><button class="light" onclick="resetStars()">Alle Sterne resetten</button></div>
 <small>Der Tagesfortschritt wird bei Beginn eines neuen lokalen Kalendertags (00:00 Uhr) automatisch auf 0 gesetzt. Sterne bleiben als langfristige Belohnung erhalten.</small></div></section>
-<script src="data.js"></script><script src="app.js"></script></body></html>
+<script src="data.js"></script><script src="app.js"></script><script src="v26.js"></script></body></html>
