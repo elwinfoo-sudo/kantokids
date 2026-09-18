@@ -1,1 +1,1 @@
-{"name":"KantoKids – Kantonesisch für Kinder","short_name":"KantoKids","start_url":"./","display":"standalone","background_color":"#fff7e8","theme_color":"#fff7e8","icons":[]}
+{"name": "KantoKids", "short_name": "KantoKids", "start_url": "./", "display": "standalone", "background_color": "#fff7e8", "theme_color": "#fff7e8", "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml"}]}
