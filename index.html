@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff7e8"><link rel="manifest" href="manifest.webmanifest">
+<title>KantoKids</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#242424}
+*{box-sizing:border-box} body{margin:0;background:#fff7e8;min-height:100vh}
+main{max-width:720px;margin:auto;padding:24px 18px 80px}
+header{display:flex;justify-content:space-between;align-items:center} h1{font-size:30px;margin:8px 0}
+.badge{background:white;padding:9px 13px;border-radius:18px;box-shadow:0 3px 12px #0001;font-weight:700}
+.hero{background:white;border-radius:28px;padding:24px;margin:18px 0;box-shadow:0 8px 30px #0001;text-align:center}
+.emoji{font-size:92px;line-height:1.2}.canto{font-size:34px;font-weight:800;margin-top:6px}.jyut{font-size:20px;color:#735b37;margin:5px}.de{font-size:20px}
+button{border:0;border-radius:18px;padding:15px 18px;font-size:18px;font-weight:750;background:#242424;color:white}
+.secondary{background:#f0e3c9;color:#242424}.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+h2{margin:28px 4px 12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:white;border-radius:22px;padding:18px;text-align:center;box-shadow:0 4px 18px #0001;cursor:pointer}
+.card .e{font-size:52px}.card .w{font-size:23px;font-weight:800}.card .j{font-size:15px;color:#765}
+.quiz{display:none;background:white;border-radius:28px;padding:22px;text-align:center;box-shadow:0 8px 30px #0001}
+.answers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.answer{font-size:52px;background:#f7f2e8;color:#222;padding:20px}
+#msg{height:30px;font-size:20px;font-weight:800;margin-top:12px}
+small{display:block;color:#756a5b;margin-top:20px;line-height:1.4}
+</style></head>
+<body><main>
+<header><h1>🐯 KantoKids</h1><div class="badge">⭐ <span id="stars">0</span></div></header>
+<section id="learn">
+<div class="hero"><div class="emoji" id="bigEmoji">🐶</div><div class="canto" id="bigCanto">狗狗</div><div class="jyut" id="bigJyut">gau2 gau2</div><div class="de" id="bigDe">Hund</div>
+<div class="row"><button onclick="speakCurrent()">🔊 Anhören</button><button class="secondary" onclick="nextWord()">Nächstes →</button></div></div>
+<div class="row"><button onclick="showLearn()">Entdecken</button><button class="secondary" onclick="startQuiz()">🎮 Spielen</button></div>
+<h2>Tippe auf ein Bild</h2><div class="grid" id="grid"></div>
+</section>
+<section id="quiz" class="quiz"><h2>Was hörst du?</h2><button onclick="speakQuiz()">🔊 Noch einmal</button><div class="answers" id="answers"></div><div id="msg"></div>
+<div class="row"><button class="secondary" onclick="showLearn()">← Zurück</button></div></section>
+<small>Hinweis: Die Sprachausgabe nutzt die auf dem iPhone verfügbaren Stimmen. Für natürliches Kantonesisch sollte in iOS eine Stimme für Chinesisch (Hongkong/Kantonesisch) verfügbar sein.</small>
+</main>
+<script>
+const words=[
+{e:"🐶",c:"狗狗",j:"gau2 gau2",d:"Hund"},{e:"🐱",c:"貓貓",j:"maau1 maau1",d:"Katze"},
+{e:"🐷",c:"豬豬",j:"zyu1 zyu1",d:"Schwein"},{e:"🐟",c:"魚",j:"jyu4",d:"Fisch"},
+{e:"🍎",c:"蘋果",j:"ping4 gwo2",d:"Apfel"},{e:"🍌",c:"香蕉",j:"hoeng1 ziu1",d:"Banane"},
+{e:"🚗",c:"車車",j:"ce1 ce1",d:"Auto"},{e:"🚌",c:"巴士",j:"baa1 si2",d:"Bus"},
+{e:"👩",c:"媽媽",j:"maa4 maa1",d:"Mama"},{e:"👨",c:"爸爸",j:"baa4 baa1",d:"Papa"},
+{e:"💧",c:"水",j:"seoi2",d:"Wasser"},{e:"🍚",c:"飯",j:"faan6",d:"Reis / Essen"}];
+let idx=0, q=null, stars=Number(localStorage.getItem("stars")||0);
+document.getElementById("stars").textContent=stars;
+function renderGrid(){grid.innerHTML=words.map((w,i)=>`<div class="card" onclick="select(${i})"><div class="e">${w.e}</div><div class="w">${w.c}</div><div class="j">${w.j}</div></div>`).join("")}
+function select(i){idx=i; let w=words[i];bigEmoji.textContent=w.e;bigCanto.textContent=w.c;bigJyut.textContent=w.j;bigDe.textContent=w.d;speak(w.c)}
+function nextWord(){select((idx+1)%words.length)}
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);let vs=speechSynthesis.getVoices();u.voice=vs.find(v=>/yue|Hong Kong|HK/i.test(v.lang+" "+v.name))||vs.find(v=>/zh-HK/i.test(v.lang))||null;u.lang="zh-HK";u.rate=.78;speechSynthesis.speak(u)}
+function speakCurrent(){speak(words[idx].c)}
+function showLearn(){quiz.style.display="none";learn.style.display="block"}
+function startQuiz(){learn.style.display="none";quiz.style.display="block";newQuiz()}
+function newQuiz(){q=words[Math.floor(Math.random()*words.length)];let opts=[q];while(opts.length<4){let x=words[Math.floor(Math.random()*words.length)];if(!opts.includes(x))opts.push(x)}opts.sort(()=>Math.random()-.5);answers.innerHTML=opts.map(w=>`<button class="answer" onclick='guess("${w.c}")'>${w.e}</button>`).join("");msg.textContent="";setTimeout(speakQuiz,250)}
+function speakQuiz(){speak(q.c)}
+function guess(c){if(c===q.c){stars++;localStorage.setItem("stars",stars);document.getElementById("stars").textContent=stars;msg.textContent="⭐ Richtig!";setTimeout(newQuiz,800)}else{msg.textContent="Fast! Hör noch einmal 👂";speakQuiz()}}
+renderGrid(); select(0);
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+</script></body></html>
